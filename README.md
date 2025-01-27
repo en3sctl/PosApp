@@ -46,8 +46,8 @@ Projeyi yerel ortamda çalıştırmak için şu adımları izleyin:
     ```
     Bu projeyi forklayın.
     
-  Yeni bir dal oluşturun:
-  
+Yeni bir dal oluşturun:
+
     git checkout -b feature/yeni-ozellik
 
 2. **Değişikliklerinizi yapın ve commit edin**:
