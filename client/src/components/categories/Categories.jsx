@@ -8,10 +8,10 @@ import "./style.css";
 const Categories = ({ categories, setCategories, setFiltered, products }) => {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [categoryTitle, setCategoryTitle] = useState("Tümü");
+  const [categoryTitle, setCategoryTitle] = useState("All");
 
   useEffect(() => {
-    if (categoryTitle === "Tümü") {
+    if (categoryTitle === "All") {
       setFiltered(products);
     } else {
       setFiltered(products.filter((item) => item.category === categoryTitle));

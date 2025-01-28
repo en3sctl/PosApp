@@ -146,19 +146,19 @@ const BillPage = () => {
 
   const columns = [
     {
-      title: "Müşteri Adı",
+      title: "Customer Name",
       dataIndex: "customerName",
       key: "customerName",
       ...getColumnSearchProps("customerName"),
     },
     {
-      title: "Telefon Numarası",
+      title: "Phone Number",
       dataIndex: "customerPhoneNumber",
       key: "customerPhoneNumber",
       ...getColumnSearchProps("customerPhoneNumber"),
     },
     {
-      title: "Oluşturma Tarihi",
+      title: "Creation Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (text) => {
@@ -166,17 +166,17 @@ const BillPage = () => {
       },
     },
     {
-      title: "Ödeme Yöntemi",
+      title: "Payment Method",
       dataIndex: "paymentMode",
       key: "paymentMode",
       ...getColumnSearchProps("paymentMode"),
     },
     {
-      title: "Toplam Fiyat",
+      title: "Total Price",
       dataIndex: "totalAmount",
       key: "totalAmount",
       render: (text) => {
-        return <span>{text}₺</span>;
+        return <span>{text}zł</span>;
       },
       sorter: (a, b) => a.totalAmount - b.totalAmount,
     },
@@ -194,7 +194,7 @@ const BillPage = () => {
               setCustomer(record);
             }}
           >
-            Yazdır
+            Print
           </Button>
         );
       },
@@ -204,7 +204,7 @@ const BillPage = () => {
   return (
     <>
       <Header />
-      <h1 className="text-4xl font-bold text-center mb-4">Faturalar</h1>
+      <h1 className="text-4xl font-bold text-center mb-4">Invoices</h1>
       {billItems ? (
         <div className="px-6">
           <Table

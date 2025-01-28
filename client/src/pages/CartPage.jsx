@@ -133,7 +133,7 @@ const CartPage = () => {
 
   const columns = [
     {
-      title: "Ürün Görseli",
+      title: "Product Image",
       dataIndex: "img",
       key: "img",
       width: "125px",
@@ -142,28 +142,28 @@ const CartPage = () => {
       },
     },
     {
-      title: "Ürün Adı",
+      title: "Product Name",
       dataIndex: "title",
       key: "title",
       ...getColumnSearchProps("title"),
     },
     {
-      title: "Kategori",
+      title: "Category",
       dataIndex: "category",
       key: "category",
       ...getColumnSearchProps("category"),
     },
     {
-      title: "Ürün Fiyatı",
+      title: "Product Price",
       dataIndex: "price",
       key: "price",
       render: (text) => {
-        return <span>{text.toFixed(2)}₺</span>;
+        return <span>{text.toFixed(2)}zł</span>;
       },
       sorter: (a, b) => a.price - b.price,
     },
     {
-      title: "Ürün Adeti",
+      title: "Product Quantity",
       dataIndex: "quantity",
       key: "quantity",
       render: (text, record) => {
@@ -186,9 +186,9 @@ const CartPage = () => {
               icon={<MinusCircleOutlined />}
               onClick={() => {
                 if (record.quantity === 1) {
-                  if (window.confirm("Ürün Silinsin Mi?")) {
+                  if (window.confirm("Delete Product?")) {
                     dispatch(decrease(record));
-                    message.success("Ürün Sepetten Silindi.");
+                    message.success("Product Removed from Cart.");
                   }
                 }
                 if (record.quantity > 1) {
@@ -201,9 +201,9 @@ const CartPage = () => {
       },
     },
     {
-      title: "Toplam Fiyat",
+      title: "Total Price",
       render: (text, record) => {
-        return <span>{(record.quantity * record.price).toFixed(2)}₺</span>;
+        return <span>{(record.quantity * record.price).toFixed(2)}zł</span>;
       },
     },
     {
@@ -211,16 +211,16 @@ const CartPage = () => {
       render: (_, record) => {
         return (
           <Popconfirm
-            title="Silmek için emin misiniz?"
+            title="Are you sure to delete??"
             onConfirm={() => {
               dispatch(deleteCart(record));
-              message.success("Ürün Sepetten Silindi.");
+              message.success("Product Removed from Cart.");
             }}
-            okText="Evet"
-            cancelText="Hayır"
+            okText="Yes"
+            cancelText="No"
           >
             <Button type="link" danger>
-              Sil
+              Delete
             </Button>
           </Popconfirm>
         );
@@ -245,25 +245,25 @@ const CartPage = () => {
         <div className="cart-total flex justify-end mt-4">
           <Card className="w-72">
             <div className="flex justify-between">
-              <span>Ara Toplam</span>
-              <span>{cart.total > 0 ? cart.total.toFixed(2) : 0}₺</span>
+              <span>Subtotal</span>
+              <span>{cart.total > 0 ? cart.total.toFixed(2) : 0}zł</span>
             </div>
             <div className="flex justify-between my-2">
-              <span>KDV %{cart.tax}</span>
+              <span>TAX %{cart.tax}</span>
               <span className="text-red-600">
                 {(cart.total * cart.tax) / 100 > 0
                   ? `+${((cart.total * cart.tax) / 100).toFixed(2)}`
                   : 0}
-                ₺
+                zł
               </span>
             </div>
             <div className="flex justify-between">
-              <b>Genel Toplam</b>
+              <b>Grand Total</b>
               <b>
                 {cart.total + (cart.total * cart.tax) / 100 > 0
                   ? (cart.total + (cart.total * cart.tax) / 100).toFixed(2)
                   : 0}
-                ₺
+                zł
               </b>
             </div>
             <Button
@@ -273,7 +273,7 @@ const CartPage = () => {
               onClick={() => setIsModalOpen(true)}
               disabled={cart.cartItems.length === 0}
             >
-              Sipariş Oluştur
+              Create Order
             </Button>
           </Card>
         </div>

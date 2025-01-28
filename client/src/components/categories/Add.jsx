@@ -16,7 +16,7 @@ const Add = ({
         body: JSON.stringify(values),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      message.success("Kategori başarıyla eklendi.");
+      message.success("Category added succesfully.");
       form.resetFields();
       setCategories([
         ...categories,
@@ -32,7 +32,7 @@ const Add = ({
 
   return (
     <Modal
-      title="Yeni Kategori Ekle"
+      title="Add new category"
       open={isAddModalOpen}
       onCancel={() => setIsAddModalOpen(false)}
       footer={false}
@@ -40,14 +40,14 @@ const Add = ({
       <Form layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
           name="title"
-          label="Kategori Ekle"
-          rules={[{ required: true, message: "Kategori Alanı Boş Geçilemez!" }]}
+          label="Add category"
+          rules={[{ required: true, message: "Category Field Cannot Be Empty!" }]}
         >
           <Input />
         </Form.Item>
         <Form.Item className="flex justify-end mb-0">
           <Button type="primary" htmlType="submit">
-            Oluştur
+            Create
           </Button>
         </Form.Item>
       </Form>

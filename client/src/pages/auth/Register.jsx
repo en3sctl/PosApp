@@ -21,12 +21,12 @@ const Register = () => {
         }
       );
       if (res.status === 200) {
-        message.success("Kayıt işlemi başarılı.");
+        message.success("Registration successful.");
         navigate("/login");
         setLoading(false);
       }
     } catch (error) {
-      message.error("Bir şeyler yanlış gitti.");
+      message.error("Something went wrong.");
       console.log(error);
     }
   };
@@ -35,15 +35,15 @@ const Register = () => {
     <div className="h-screen">
       <div className="flex justify-between h-full">
         <div className="xl:px-20 px-10 w-full flex flex-col h-full justify-center relative">
-          <h1 className="text-center text-5xl font-bold mb-2">LOGO</h1>
+          <h1 className="text-center text-5xl font-bold mb-2">PJATK</h1>
           <Form layout="vertical" onFinish={onFinish}>
             <Form.Item
-              label="Kullanıcı Adı"
+              label="User name"
               name={"username"}
               rules={[
                 {
                   required: true,
-                  message: "Kullanıcı Adı Alanı Boş Bırakılamaz!",
+                  message: "Username Field Cannot Be Left Blank!",
                 },
               ]}
             >
@@ -55,32 +55,32 @@ const Register = () => {
               rules={[
                 {
                   required: true,
-                  message: "E-mail Alanı Boş Bırakılamaz!",
+                  message: "Email Field Cannot Be Left Blank!",
                 },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label="Şifre"
+              label="Password"
               name={"password"}
               rules={[
                 {
                   required: true,
-                  message: "Şifre Alanı Boş Bırakılamaz!",
+                  message: "Password Field Cannot Be Left Blank!",
                 },
               ]}
             >
               <Input.Password />
             </Form.Item>
             <Form.Item
-              label="Şifre Tekrar"
+              label="Password Again"
               name={"passwordAgain"}
               dependencies={["password"]}
               rules={[
                 {
                   required: true,
-                  message: "Şifre Tekrar Alanı Boş Bırakılamaz!",
+                  message: "Password Again Field Cannot Be Left Blank!",
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
@@ -88,7 +88,7 @@ const Register = () => {
                       return Promise.resolve();
                     }
                     return Promise.reject(
-                      new Error("Şifreler Aynı Olmak Zorunda!")
+                      new Error("Passwords Must Be The Same!")
                     );
                   },
                 }),
@@ -104,14 +104,14 @@ const Register = () => {
                 size="large"
                 loading={loading}
               >
-                Kaydol
+                Sign up
               </Button>
             </Form.Item>
           </Form>
           <div className="flex justify-center absolute left-0 bottom-10 w-full">
-            Bir hesabınız var mı?&nbsp;
+            Do you have an account??&nbsp;
             <Link to="/login" className="text-blue-600">
-              Şimdi giriş yap
+              Log in now
             </Link>
           </div>
         </div>
@@ -122,22 +122,22 @@ const Register = () => {
                 <AuthCarousel
                   img="/images/responsive.svg"
                   title="Responsive"
-                  desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                  desc="Compatibility with All Device Sizes"
                 />
                 <AuthCarousel
                   img="/images/statistic.svg"
-                  title="İstatistikler"
-                  desc="Geniş Tutulan İstatistikler"
+                  title="Statistics"
+                  desc="Widely Held Statistics"
                 />
                 <AuthCarousel
                   img="/images/customer.svg"
-                  title="Müşteri Memnuniyeti"
-                  desc="Deneyim Sonunda Üründen Memnun Müşteriler"
+                  title="Customer Satisfaction"
+                  desc="Customers Satisfied with the Product at the End of the Experience"
                 />
                 <AuthCarousel
                   img="/images/admin.svg"
                   title="Yönetici Paneli"
-                  desc="Tek Yerden Yönetim"
+                  desc="Admin Panel"
                 />
               </Carousel>
             </div>

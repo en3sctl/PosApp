@@ -11,7 +11,9 @@ const Edit = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/products/get-all");
+        const res = await fetch(
+          process.env.REACT_APP_SERVER_URL + "/api/products/get-all"
+        );
         const data = await res.json();
         setProducts(data);
       } catch (error) {
@@ -25,7 +27,9 @@ const Edit = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/categories/get-all");
+        const res = await fetch(
+          process.env.REACT_APP_SERVER_URL + "/api/categories/get-all"
+        );
         const data = await res.json();
         data &&
           setCategories(
@@ -48,7 +52,7 @@ const Edit = () => {
         body: JSON.stringify({ ...values, productId: editingItem._id }),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      message.success("Ürün başarıyla güncellendi.");
+      message.success("Product updated successfully.");
       setProducts(
         products.map((item) => {
           if (item._id === editingItem._id) {
@@ -58,23 +62,26 @@ const Edit = () => {
         })
       );
     } catch (error) {
-      message.error("Bir şeyler yanlış gitti.");
+      message.error("Something went wrong.");
       console.log(error);
     }
   };
 
   const deleteCategory = (id) => {
-    if (window.confirm("Emin misiniz?")) {
+    if (window.confirm("Are you sure?")) {
       try {
-        fetch(process.env.REACT_APP_SERVER_URL + "/api/products/delete-product", {
-          method: "DELETE",
-          body: JSON.stringify({ productId: id }),
-          headers: { "Content-type": "application/json; charset=UTF-8" },
-        });
-        message.success("Ürün başarıyla silindi.");
+        fetch(
+          process.env.REACT_APP_SERVER_URL + "/api/products/delete-product",
+          {
+            method: "DELETE",
+            body: JSON.stringify({ productId: id }),
+            headers: { "Content-type": "application/json; charset=UTF-8" },
+          }
+        );
+        message.success("Item deleted successfully.");
         setProducts(products.filter((item) => item._id !== id));
       } catch (error) {
-        message.error("Bir şeyler yanlış gitti.");
+        message.error("Something went wrong.");
         console.log(error);
       }
     }
@@ -82,7 +89,7 @@ const Edit = () => {
 
   const columns = [
     {
-      title: "Ürün Adı",
+      title: "Product name",
       dataIndex: "title",
       width: "8%",
       render: (_, record) => {
@@ -90,7 +97,7 @@ const Edit = () => {
       },
     },
     {
-      title: "Ürün Görseli",
+      title: "Product Image",
       dataIndex: "img",
       width: "4%",
       render: (_, record) => {
@@ -100,12 +107,12 @@ const Edit = () => {
       },
     },
     {
-      title: "Ürün Fiyatı",
+      title: "Product Price",
       dataIndex: "price",
       width: "8%",
     },
     {
-      title: "Kategori",
+      title: "Category",
       dataIndex: "category",
       width: "8%",
     },
@@ -124,14 +131,14 @@ const Edit = () => {
                 setEditingItem(record);
               }}
             >
-              Düzenle
+              Edit
             </Button>
             <Button
               type="link"
               danger
               onClick={() => deleteCategory(record._id)}
             >
-              Sil
+              Delete
             </Button>
           </div>
         );
@@ -152,7 +159,7 @@ const Edit = () => {
         }}
       />
       <Modal
-        title="Yeni Ürün Ekle"
+        title="Add new product"
         open={isEditModalOpen}
         onCancel={() => setIsEditModalOpen(false)}
         footer={false}
@@ -165,36 +172,45 @@ const Edit = () => {
         >
           <Form.Item
             name="title"
-            label="Ürün Adı"
+            label="Product name"
             rules={[
-              { required: true, message: "Ürün Adı Alanı Boş Geçilemez!" },
+              {
+                required: true,
+                message: "Product Name Field Cannot Be Empty!",
+              },
             ]}
           >
-            <Input placeholder="Ürün adı giriniz." />
+            <Input placeholder="Enter product name." />
           </Form.Item>
           <Form.Item
             name="img"
-            label="Ürün Görseli"
+            label="Product Image"
             rules={[
-              { required: true, message: "Ürün Görseli Alanı Boş Geçilemez!" },
+              {
+                required: true,
+                message: "Product Image Field Cannot Be Empty!",
+              },
             ]}
           >
-            <Input placeholder="Ürün görseli giriniz." />
+            <Input placeholder="Enter product image." />
           </Form.Item>
           <Form.Item
             name="price"
-            label="Ürün Fiyatı"
+            label="Product Price"
             rules={[
-              { required: true, message: "Ürün Fiyatı Alanı Boş Geçilemez!" },
+              {
+                required: true,
+                message: "Product Price Field Cannot Be Empty!",
+              },
             ]}
           >
-            <Input placeholder="Ürün fiyatı giriniz." />
+            <Input placeholder="Enter the product price." />
           </Form.Item>
           <Form.Item
             name="category"
-            label="Kategori Seç"
+            label="Select category"
             rules={[
-              { required: true, message: "Kategori Alanı Boş Geçilemez!" },
+              { required: true, message: "Category Field Cannot Be Empty!" },
             ]}
           >
             <Select
@@ -214,7 +230,7 @@ const Edit = () => {
           </Form.Item>
           <Form.Item className="flex justify-end mb-0">
             <Button type="primary" htmlType="submit">
-              Güncelle
+              Update
             </Button>
           </Form.Item>
         </Form>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Button, Card, Form, Input, message, Modal, Select } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,39 +11,44 @@ const CreateBill = ({ isModalOpen, setIsModalOpen }) => {
 
   const onFinish = async (values) => {
     try {
-      const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/bills/add-bill", {
-        method: "POST",
-        body: JSON.stringify({
-          ...values,
-          subTotal: cart.total,
-          tax: ((cart.total * cart.tax) / 100).toFixed(2),
-          totalAmount: (cart.total + (cart.total * cart.tax) / 100).toFixed(2),
-          cartItems: cart.cartItems,
-        }),
-        headers: { "Content-type": "application/json; charset=UTF-8" },
-      });
+      const res = await fetch(
+        process.env.REACT_APP_SERVER_URL + "/api/bills/add-bill",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            ...values,
+            subTotal: cart.total,
+            tax: ((cart.total * cart.tax) / 100).toFixed(2),
+            totalAmount: (cart.total + (cart.total * cart.tax) / 100).toFixed(
+              2
+            ),
+            cartItems: cart.cartItems,
+          }),
+          headers: { "Content-type": "application/json; charset=UTF-8" },
+        }
+      );
 
       if (res.status === 200) {
-        message.success("Fatura başarıyla oluşturuldu.");
+        message.success("Invoice created successfully.");
         dispatch(reset());
         navigate("/bills");
       }
     } catch (error) {
-      message.danger("Bir şeyler yanlış gitti.");
+      message.danger("Something went wrong.");
       console.log(error);
     }
   };
 
   return (
     <Modal
-      title="Fatura Oluştur"
+      title="Create Invoice"
       open={isModalOpen}
       footer={false}
       onCancel={() => setIsModalOpen(false)}
     >
       <Form layout={"vertical"} onFinish={onFinish}>
         <Form.Item
-          label="Müşteri Adı"
+          label="Customer Name"
           name={"customerName"}
           rules={[
             {
@@ -52,46 +57,46 @@ const CreateBill = ({ isModalOpen, setIsModalOpen }) => {
             },
           ]}
         >
-          <Input placeholder="Bir Müşteri Adı Yazınız" />
+          <Input placeholder="Write a Customer Name" />
         </Form.Item>
         <Form.Item
           rules={[{ required: true }]}
           name={"customerPhoneNumber"}
-          label="Tel No"
+          label="Phone Number"
         >
-          <Input placeholder="Bir Tel No Yazınız" maxLength={11} />
+          <Input placeholder="Write a Phone Number" maxLength={11} />
         </Form.Item>
         <Form.Item
-          label="Ödeme Yöntemi"
+          label="Payment method"
           rules={[{ required: true }]}
           name={"paymentMode"}
         >
-          <Select placeholder="Bir Ödeme Yöntemi Seçiniz">
-            <Select.Option value="Nakit">Nakit</Select.Option>
-            <Select.Option value="Kredi Kartı">Kredi Kartı</Select.Option>
+          <Select placeholder="Select a Payment Method">
+            <Select.Option value="Cash">Cash</Select.Option>
+            <Select.Option value="Credit Card">Credit Card</Select.Option>
           </Select>
         </Form.Item>
         <Card>
           <div className="flex justify-between">
-            <span>Ara Toplam</span>
-            <span>{cart.total > 0 ? cart.total.toFixed(2) : 0}₺</span>
+            <span>Subtotal</span>
+            <span>{cart.total > 0 ? cart.total.toFixed(2) : 0}zł</span>
           </div>
           <div className="flex justify-between my-2">
-            <span>KDV %{cart.tax}</span>
+            <span>TAX %{cart.tax}</span>
             <span className="text-red-600">
               {(cart.total * cart.tax) / 100 > 0
                 ? `+${((cart.total * cart.tax) / 100).toFixed(2)}`
                 : 0}
-              ₺
+              zł
             </span>
           </div>
           <div className="flex justify-between">
-            <b>Genel Toplam</b>
+            <b>Grand Total</b>
             <b>
               {cart.total + (cart.total * cart.tax) / 100 > 0
                 ? (cart.total + (cart.total * cart.tax) / 100).toFixed(2)
                 : 0}
-              ₺
+              zł
             </b>
           </div>
           <div className="flex justify-end">
@@ -102,7 +107,7 @@ const CreateBill = ({ isModalOpen, setIsModalOpen }) => {
               htmlType="submit"
               disabled={cart.cartItems.length === 0}
             >
-              Sipariş Oluştur
+              Create Order
             </Button>
           </div>
         </Card>

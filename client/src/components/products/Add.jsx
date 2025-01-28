@@ -17,7 +17,7 @@ const Add = ({
         body: JSON.stringify(values),
         headers: { "Content-type": "application/json; charset=UTF-8" },
       });
-      message.success("Ürün başarıyla eklendi.");
+      message.success("Item added successfully.");
       form.resetFields();
       setProducts([
         ...products,
@@ -27,7 +27,7 @@ const Add = ({
           price: Number(values.price),
         },
       ]);
-      setIsAddModalOpen(false)
+      setIsAddModalOpen(false);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +35,7 @@ const Add = ({
 
   return (
     <Modal
-      title="Yeni Ürün Ekle"
+      title="Add new item"
       open={isAddModalOpen}
       onCancel={() => setIsAddModalOpen(false)}
       footer={false}
@@ -43,33 +43,37 @@ const Add = ({
       <Form layout="vertical" onFinish={onFinish} form={form}>
         <Form.Item
           name="title"
-          label="Ürün Adı"
-          rules={[{ required: true, message: "Ürün Adı Alanı Boş Geçilemez!" }]}
+          label="Item name"
+          rules={[
+            { required: true, message: "Product Name Field Cannot Be Empty!" },
+          ]}
         >
-          <Input placeholder="Ürün adı giriniz." />
+          <Input placeholder="Enter product name." />
         </Form.Item>
         <Form.Item
           name="img"
-          label="Ürün Görseli"
+          label="Product Image"
           rules={[
-            { required: true, message: "Ürün Görseli Alanı Boş Geçilemez!" },
+            { required: true, message: "Product Image Field Cannot Be Empty!" },
           ]}
         >
-          <Input placeholder="Ürün görseli giriniz." />
+          <Input placeholder="Enter product image." />
         </Form.Item>
         <Form.Item
           name="price"
-          label="Ürün Fiyatı"
+          label="Item price"
           rules={[
-            { required: true, message: "Ürün Fiyatı Alanı Boş Geçilemez!" },
+            { required: true, message: "Product Price Field Cannot Be Empty!" },
           ]}
         >
-          <Input placeholder="Ürün fiyatı giriniz." />
+          <Input placeholder="Enter the product price." />
         </Form.Item>
         <Form.Item
           name="category"
-          label="Kategori Seç"
-          rules={[{ required: true, message: "Kategori Alanı Boş Geçilemez!" }]}
+          label="Select Category"
+          rules={[
+            { required: true, message: "Category Field Cannot Be Empty!" },
+          ]}
         >
           <Select
             showSearch
@@ -88,7 +92,7 @@ const Add = ({
         </Form.Item>
         <Form.Item className="flex justify-end mb-0">
           <Button type="primary" htmlType="submit">
-            Oluştur
+            Create
           </Button>
         </Form.Item>
       </Form>

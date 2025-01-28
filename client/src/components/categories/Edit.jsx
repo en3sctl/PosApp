@@ -27,23 +27,23 @@ const Edit = ({
         })
       );
     } catch (error) {
-      message.error("Bir şeyler yanlış gitti.");
+      message.error("Something went wrong.");
       console.log(error);
     }
   };
 
   const deleteCategory = (id) => {
-    if (window.confirm("Emin misiniz?")) {
+    if (window.confirm("Are you sure?")) {
       try {
         fetch(process.env.REACT_APP_SERVER_URL + "/api/categories/delete-category", {
           method: "DELETE",
           body: JSON.stringify({ categoryId: id }),
           headers: { "Content-type": "application/json; charset=UTF-8" },
         });
-        message.success("Kategori başarıyla silindi.");
+        message.success("Category deleted successfully.");
         setCategories(categories.filter((item) => item._id !== id));
       } catch (error) {
-        message.error("Bir şeyler yanlış gitti.");
+        message.error("Something went wrong.");
         console.log(error);
       }
     }
@@ -76,17 +76,17 @@ const Edit = ({
               onClick={() => setEditingRow(record)}
               className="pl-0"
             >
-              Düzenle
+              Edit
             </Button>
             <Button type="link" htmlType="submit" className="text-gray-500">
-              Kaydet
+              Save
             </Button>
             <Button
               type="link"
               danger
               onClick={() => deleteCategory(record._id)}
             >
-              Sil
+              Delete
             </Button>
           </div>
         );

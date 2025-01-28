@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { useEffect, useState } from "react";
 import Header from "../components/header/Header.jsx";
 import StatisticCard from "../components/statistics/StatisticCard.jsx";
@@ -17,7 +17,9 @@ const StatisticPage = () => {
   useEffect(() => {
     const getProducts = async () => {
       try {
-        const res = await fetch(process.env.REACT_APP_SERVER_URL + "/api/products/get-all");
+        const res = await fetch(
+          process.env.REACT_APP_SERVER_URL + "/api/products/get-all"
+        );
         const data = await res.json();
         setProducts(data);
       } catch (error) {
@@ -85,18 +87,18 @@ const StatisticPage = () => {
 
   const totalAmount = () => {
     const amount = data.reduce((total, item) => item.totalAmount + total, 0);
-    return `${amount.toFixed(2)}₺`;
+    return `${amount.toFixed(2)}zł`;
   };
 
   return (
     <>
       <Header />
-      <h1 className="text-4xl font-bold text-center mb-4">İstatistiklerim</h1>
+      <h1 className="text-4xl font-bold text-center mb-4">Statistics</h1>
       {data ? (
         <div className="px-6 md:pb-0 pb-20">
           <div className="statistic-section">
             <h2 className="text-lg">
-              Hoş geldin{" "}
+              Welcome{" "}
               <span className="text-green-700 font-bold text-xl">
                 {user.username}
               </span>
@@ -104,22 +106,22 @@ const StatisticPage = () => {
             </h2>
             <div className="statistic-cards grid xl:grid-cols-4 md:grid-cols-2 my-10 md:gap-10 gap-4">
               <StatisticCard
-                title={"Toplam Müşteri"}
+                title={"Total Customers"}
                 amount={data?.length}
                 img={"images/user.png"}
               />
               <StatisticCard
-                title={"Toplam Kazanç"}
+                title={"Total Earnings"}
                 amount={totalAmount()}
                 img={"images/money.png"}
               />
               <StatisticCard
-                title={"Toplam Satış"}
+                title={"Total Sales"}
                 amount={data?.length}
                 img={"images/sale.png"}
               />
               <StatisticCard
-                title={"Toplam Ürün"}
+                title={"Total Product"}
                 amount={products?.length}
                 img={"images/product.png"}
               />

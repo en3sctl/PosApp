@@ -8,7 +8,7 @@ const ProductItem = ({ item }) => {
 
   const handleClick = () => {
     dispatch(addProduct({ ...item, quantity: 1 }));
-    message.success("Ürün Sepete Eklendi.")
+    message.success("Product Added to Cart.")
   };
 
   return (
@@ -25,7 +25,7 @@ const ProductItem = ({ item }) => {
       </div>
       <div className="product-info flex flex-col p-3">
         <span className="font-bold">{item.title}</span>
-        <span>{item.price}₺</span>
+        <span>{item.price}zł</span>
       </div>
     </div>
   );

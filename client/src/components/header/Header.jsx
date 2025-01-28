@@ -19,10 +19,10 @@ const Header = ({ setSearch }) => {
   const navigate = useNavigate();
 
   const logOut = () => {
-    if (window.confirm("Çıkış yapmak istediğinize emin misiniz?")) {
+    if (window.confirm("Are you sure you want to log out??")) {
       localStorage.removeItem("posUser");
       navigate("/login");
-      message.success("Çıkış işlemi başarılı.");
+      message.success("Logout successful.");
     }
   };
 
@@ -31,7 +31,7 @@ const Header = ({ setSearch }) => {
       <header className="py-4 px-6 flex justify-between items-center gap-10">
         <div className="logo">
           <Link to="/">
-            <h2 className="text-2xl font-bold md:text-4xl">LOGO</h2>
+            <h2 className="text-2xl font-bold md:text-4xl">PJATK</h2>
           </Link>
         </div>
         <div
@@ -42,7 +42,7 @@ const Header = ({ setSearch }) => {
         >
           <Input
             size="large"
-            placeholder="Ürün Ara..."
+            placeholder="Search item..."
             prefix={<SearchOutlined />}
             className="rounded-full max-w-[800px]"
             onChange={(e) => setSearch(e.target.value.toLowerCase())}
@@ -54,7 +54,7 @@ const Header = ({ setSearch }) => {
             className={`menu-link ${pathname === "/" && "active"}`}
           >
             <HomeOutlined className="md:text-2xl text-xl" />
-            <span className="md:text-xs text-[10px]">Ana Sayfa</span>
+            <span className="md:text-xs text-[10px]">Home Page</span>
           </Link>
           <Badge
             count={cart.cartItems.length}
@@ -66,7 +66,7 @@ const Header = ({ setSearch }) => {
               className={`menu-link ${pathname === "/cart" && "active"}`}
             >
               <ShoppingCartOutlined className="md:text-2xl text-xl" />
-              <span className="md:text-xs text-[10px]">Sepet</span>
+              <span className="md:text-xs text-[10px]">Cart</span>
             </Link>
           </Badge>
           <Link
@@ -74,26 +74,26 @@ const Header = ({ setSearch }) => {
             className={`menu-link ${pathname === "/bills" && "active"}`}
           >
             <CopyOutlined className="md:text-2xl text-xl" />
-            <span className="md:text-xs text-[10px]">Faturalar</span>
+            <span className="md:text-xs text-[10px]">Invoices</span>
           </Link>
           <Link
             to={"/customers"}
             className={`menu-link ${pathname === "/customers" && "active"}`}
           >
             <UserOutlined className="md:text-2xl text-xl" />
-            <span className="md:text-xs text-[10px]">Müşteriler</span>
+            <span className="md:text-xs text-[10px]">Customers</span>
           </Link>
           <Link
             to={"/statistic"}
             className={`menu-link ${pathname === "/statistic" && "active"}`}
           >
             <BarChartOutlined className="md:text-2xl text-xl" />
-            <span className="md:text-xs text-[10px]">İstatistikler</span>
+            <span className="md:text-xs text-[10px]">Statistics</span>
           </Link>
           <div onClick={logOut}>
             <Link className={`menu-link`}>
               <LogoutOutlined className="md:text-2xl text-xl" />
-              <span className="md:text-xs text-[10px]">Çıkış</span>
+              <span className="md:text-xs text-[10px]">Logout</span>
             </Link>
           </div>
         </div>
@@ -107,7 +107,7 @@ const Header = ({ setSearch }) => {
             className={`menu-link ${pathname === "/cart" && "active"}`}
           >
             <ShoppingCartOutlined className="text-2xl" />
-            <span className="md:text-xs text-[10px]">Sepet</span>
+            <span className="md:text-xs text-[10px]">Cart</span>
           </Link>
         </Badge>
       </header>

@@ -30,16 +30,16 @@ const Login = () => {
             email: user.email,
           })
         );
-        message.success("Giriş işlemi başarılı.");
+        message.success("Login successful.");
         navigate("/");
       } else if (res.status === 404) {
-        message.error("Kullanıcı bulunamadı!");
+        message.error("User not found!");
       } else if (res.status === 403) {
-        message.error("Şifre yanlış!");
+        message.error("Password is wrong!");
       }
       setLoading(false);
     } catch (error) {
-      message.error("Bir şeyler yanlış gitti.");
+      message.error("Something went wrong.");
       console.log(error);
       setLoading(false);
     }
@@ -49,7 +49,7 @@ const Login = () => {
     <div className="h-screen">
       <div className="flex justify-between h-full">
         <div className="xl:px-20 px-10 w-full flex flex-col h-full justify-center relative">
-          <h1 className="text-center text-5xl font-bold mb-2">LOGO</h1>
+          <h1 className="text-center text-5xl font-bold mb-2">PJATK</h1>
           <Form
             layout="vertical"
             onFinish={onFinish}
@@ -63,19 +63,19 @@ const Login = () => {
               rules={[
                 {
                   required: true,
-                  message: "E-mail Alanı Boş Bırakılamaz!",
+                  message: "Email Field Cannot Be Left Blank!",
                 },
               ]}
             >
               <Input />
             </Form.Item>
             <Form.Item
-              label="Şifre"
+              label="Password"
               name={"password"}
               rules={[
                 {
                   required: true,
-                  message: "Şifre Alanı Boş Bırakılamaz!",
+                  message: "Password Field Cannot Be Left Blank!",
                 },
               ]}
             >
@@ -95,14 +95,14 @@ const Login = () => {
                 size="large"
                 loading={loading}
               >
-                Giriş Yap
+                Login
               </Button>
             </Form.Item>
           </Form>
           <div className="flex justify-center absolute left-0 bottom-10 w-full">
-            Henüz bir hesabınız yok mu?&nbsp;
+            Don't have an account yet??&nbsp;
             <Link to="/register" className="text-blue-600">
-              Şimdi kaydol
+              Register now
             </Link>
           </div>
         </div>
@@ -113,22 +113,22 @@ const Login = () => {
                 <AuthCarousel
                   img="/images/responsive.svg"
                   title="Responsive"
-                  desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                  desc="Compatibility with All Device Sizes"
                 />
                 <AuthCarousel
                   img="/images/statistic.svg"
-                  title="İstatistikler"
-                  desc="Geniş Tutulan İstatistikler"
+                  title="Statistics"
+                  desc="Widely Held Statistics"
                 />
                 <AuthCarousel
                   img="/images/customer.svg"
-                  title="Müşteri Memnuniyeti"
-                  desc="Deneyim Sonunda Üründen Memnun Müşteriler"
+                  title="Customer Satisfaction"
+                  desc="Customers Satisfied with the Product at the End of the Experience"
                 />
                 <AuthCarousel
                   img="/images/admin.svg"
-                  title="Yönetici Paneli"
-                  desc="Tek Yerden Yönetim"
+                  title="Admin Panel"
+                  desc="Management from a Single Place"
                 />
               </Carousel>
             </div>

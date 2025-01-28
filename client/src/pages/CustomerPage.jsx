@@ -143,19 +143,19 @@ const CustomerPage = () => {
 
   const columns = [
     {
-      title: "Müşteri Adı",
+      title: "Customer Name",
       dataIndex: "customerName",
       key: "customerName",
       ...getColumnSearchProps("customerName"),
     },
     {
-      title: "Telefon Numarası",
+      title: "Phone Number",
       dataIndex: "customerPhoneNumber",
       key: "customerPhoneNumber",
       ...getColumnSearchProps("customerPhoneNumber"),
     },
     {
-      title: "İşlem Tarihi",
+      title: "Transaction Date",
       dataIndex: "createdAt",
       key: "createdAt",
       render: (text) => {
@@ -167,7 +167,7 @@ const CustomerPage = () => {
   return (
     <>
       <Header />
-      <h1 className="text-4xl font-bold text-center mb-4">Müşterilerim</h1>
+      <h1 className="text-4xl font-bold text-center mb-4">Customers</h1>
       {billItems ? (
         <div className="px-6">
           <Table
