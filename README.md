@@ -1,65 +1,65 @@
 # PosApp
 
-PosApp, küçük ve orta ölçekli işletmeler için satış noktası (POS) çözümleri sunan bir uygulamadır. Bu proje, kullanıcı dostu bir arayüzle stok takibi, satış işlemleri ve raporlama gibi temel işlevleri sağlar.
+PosApp is an application that provides point of sale (POS) solutions for small and medium-sized businesses. This project provides basic functions such as inventory tracking, sales transactions and reporting with a user-friendly interface.
 
-## Özellikler
+## Features
 
-- **Satış Yönetimi**: Ürün satışı, fatura oluşturma ve ödeme işlemleri.
-- **Stok Takibi**: Ürün envanterinin kolayca yönetilmesi.
-- **Raporlama**: Satış performansı, günlük/aylık raporlar ve gelir analizi.
-- **Kullanıcı Yönetimi**: Yetkilendirme ve kullanıcı bazlı işlem geçmişi.
-- **Responsive Tasarım**: Masaüstü ve mobil cihazlarla uyumlu bir arayüz.
+- **Sales Management**: Product sales, invoice creation and payment transactions.
+- **Stock Tracking**: Easy management of product inventory.
+- **Reporting**: Sales performance, daily/monthly reports and income analysis.
+- **User Management**: Authorization and user-based transaction history.
+- **Responsive Design**: An interface compatible with desktop and mobile devices.
 
-## Gereksinimler
+## Requirements
 
-Projeyi çalıştırmadan önce aşağıdaki yazılımların sisteminizde yüklü olduğundan emin olun:
+Before running the project, make sure that the following software is installed on your system:
 
-- [Node.js](https://nodejs.org/) (v14 ve üzeri)
-- [npm](https://www.npmjs.com/) veya [yarn](https://yarnpkg.com/)
-- Bir veritabanı (örneğin: MySQL, PostgreSQL, MongoDB)
+- [Node.js](https://nodejs.org/) (v14 and above)
+- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- A database (for example: MySQL, PostgreSQL, MongoDB)
 
-## Kurulum
+## Setup
 
-Projeyi yerel ortamda çalıştırmak için şu adımları izleyin:
+To run the project locally, follow these steps:
 
-1. **Depoyu klonlayın**:
+1. **Clone the repository**:
    ```bash
    git clone https://github.com/en3sctl/PosApp.git
    cd PosApp
 
-2. **Gerekli bağımlılıkları yükleyin**:
+2. **Install required dependencies**:
    ```bash
    npm install
    yarn install
 
-3. **Ortam dosyasını (.env) yapılandırın: .env.example dosyasını kopyalayarak .env olarak adlandırın ve gerekli alanları doldurun.**
+3. **Configure the environment file (.env): Copy the .env.example file and rename it to .env and fill in the required fields.**
 
-4. **Veritabanını hazırlayın: ORM veya manuel sorgular ile gerekli tabloları oluşturun**:
+4. **Prepare the database: Create the required tables with ORM or manual queries**:
 
-5. **Uygulamayı başlatın**:
+5. **Start the application**:
 
-6. **Uygulamayı görüntüleyin: Tarayıcınızda http://localhost:3000 adresine giderek uygulamayı çalıştırabilirsiniz**.
+6. **View the application: You can run the application by going to http://localhost:3000 in your browser**.
 
-## Katkıda Bulunma
+## Contribute
 
-1. **Katkıda bulunmak isterseniz, şu adımları takip edebilirsiniz**:
-    ```
-    Bu projeyi forklayın.
-    
-Yeni bir dal oluşturun:
+1. **If you want to contribute, you can follow these steps**:
+   ```
+   Fork this project.
 
-    git checkout -b feature/yeni-ozellik
+Create a new branch:
 
-2. **Değişikliklerinizi yapın ve commit edin**:
-    ```
-    git commit -m "Yeni özellik eklendi"
+   git checkout -b feature/new-feature
 
-3. **Dalınızı gönderin**:
-    ```
-    git push origin feature/yeni-ozellik
+2. **Make your changes and commit**:
+   ```
+   git commit -m "New feature added"
 
-4. **Bir Pull Request (PR) oluşturun**.
+3. **Submit your branch**:
+   ```
+   git push origin feature/new-feature
 
-## İletişim
+4. **Create a Pull Request (PR)**.
 
-Daha fazla bilgi veya destek için benim ile iletişime geçebilirsiniz.
+## Contact
+
+For more information or support, you can contact me.
